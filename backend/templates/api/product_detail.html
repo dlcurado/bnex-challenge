@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Primeira Template</title>
+</head>
+<body>
+    <h1>Lista de produtos</h1>
+    <input type="submit" value="Voltar" onclick="location.href = '{% url 'products:list' %}'" />
+    <ul>
+        <li>Nome: {{ object.name }}</li>
+        <li>Descrição: {{ object.description }}</li>
+        <li>Valor: {{ object.value }}</li>
+    </ul>
+</body>
+</html>

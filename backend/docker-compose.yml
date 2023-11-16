@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  bnex_api:
+    container_name: bnex_api
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_PASSWORD=admin@123
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=bnex_db
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=bnex_db
