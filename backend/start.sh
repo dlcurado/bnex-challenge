@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "Creating Migrations..."
-#python manage.py makemigrations api
+python manage.py makemigrations api
 echo ====================================
 
 echo "Starting Migrations..."
-#python manage.py migrate
+python manage.py migrate
 echo ====================================
 
 echo "Starting Server..."

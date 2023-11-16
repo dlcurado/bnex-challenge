@@ -1,13 +1,26 @@
 version: '3'
 
 services:
+  bnex_app:
+    container_name: bnex_app
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    networks:
+      - bnex_challenge_network
+    depends_on:
+      - bnex_api
+    command: npm run dev
+
   bnex_api:
     container_name: bnex_api
     build: 
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
       - POSTGRES_PASSWORD=admin@123
       - POSTGRES_USER=admin
@@ -18,7 +31,7 @@ services:
       - bnex_challenge_network
     depends_on:
       - bnex_db
-
+  
   bnex_db:
     image: postgres
     container_name: bnex_db
@@ -29,7 +42,7 @@ services:
       POSTGRES_DB: bnex_db
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
       - /database:/var/lib/postgresql/data
     networks:
