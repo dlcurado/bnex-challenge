@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Creating Migrations..."
-python3 manage.py makemigrations api
+python3 manage.py makemigrations
 echo ====================================
 
 echo "Starting Migrations..."
