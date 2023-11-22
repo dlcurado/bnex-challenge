@@ -1,4 +1,8 @@
 #!/bin/bash
+echo "Starting Migrations for inital Use Admin..."
+python3 manage.py migrate
+echo ====================================
+
 echo "Creating Migrations..."
 python3 manage.py makemigrations
 echo ====================================
