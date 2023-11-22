@@ -15,6 +15,7 @@ WORKDIR /app
 
 # Bundle app source
 COPY . .
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Expose port

@@ -20,14 +20,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^@-nd9+4rftxjxu$^b7mf47r!s7@63ttus#e0t4x_%@$4kn!r+'
+SECRET_KEY = 'django-insecure-7yeg*tc3o4ema_+8%8rtks3cp3y3d2me0s1(d0nny8=!b^+4jn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
+    'http://localhost:5173',
+]
 
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+  'http://localhost:5173',  
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,16 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'rest_framework',
-    'coreapi',
-    'api',
+    'corsheaders',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -60,7 +70,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+          os.path.join(BASE_DIR, 'templates') # Templates for CBV
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,9 +98,22 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_DB','bnex_db'),
         'PORT': os.environ.get('POSTGRES_PORT','5432'),
         'HOST': os.environ.get('POSTGRES_HOST','bnex_db'),
+        #'HOST': os.environ.get('POSTGRES_HOST','172.19.0.3'),
+        
     }
 }
 
+AUTH_USER_MODEL = 'api.AppUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -132,12 +155,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Cors authorizations
-CORS_ALLOWED_ORIGINS = [
-  "http://localhost:5173"
-]
-
-REST_FRAMEWORK = {
-  'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-}

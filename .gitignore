@@ -1,2 +1,5 @@
-/mysql
-/backend/venv
+mysql
+venv
+.vscode
+migrations
+__pycache__

@@ -1,14 +1,45 @@
 version: "3.9"
 
 services:
-  bnex_api:
-    container_name: bnex_api
-    build: .
-    ports:
-      - "8000:8000"
+  # bnex_api:
+  #   container_name: bnex_api
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - POSTGRES_PASSWORD=admin@123
+  #     - POSTGRES_USER=admin
+  #     - POSTGRES_DB=bnex_db
+  #     - POSTGRES_PORT=5432
+  #     - POSTGRES_HOST=bnex_db
+  #   networks:
+  #     - bnex_challenge_network
+        
+  bnex_db:
+    image: postgres
+    container_name: bnex_db
+    restart: always
     environment:
-      - POSTGRES_PASSWORD=admin@123
-      - POSTGRES_USER=admin
-      - POSTGRES_DB=bnex_db
-      - POSTGRES_PORT=5432
-      - POSTGRES_HOST=bnex_db
+      POSTGRES_PASSWORD: admin@123
+      POSTGRES_USER: admin
+      POSTGRES_DB: bnex_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    networks:
+      - bnex_challenge_network
+
+  bnex_db_adminer:
+    image: adminer
+    container_name: bnex_db_adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - bnex_challenge_network
+
+networks:
+    bnex_challenge_network:
+      driver: bridge

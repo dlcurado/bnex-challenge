@@ -6,3 +6,7 @@ body {
   background: #202020;
   color: white;
 }
+
+input {
+  color: black;
+}

@@ -1,24 +1,24 @@
 from django.urls import path, include
+from . import views
 from rest_framework import routers
-from api import views
-from . views import ProductAPI, ProductList, ProductDetails, ProductCreate, ProductUpdate, ProductDelete
 
 # Config API route
 routerAPI = routers.DefaultRouter()
 routerAPI.register(r'products', views.ProductAPI, 'products')
 
-
 app_name = 'products'
 
 urlpatterns = [
-    path('api/v1/', include(routerAPI.urls)),
+	path('users/register', views.UserRegister.as_view(), name='register'),
+	path('users/login', views.UserLogin.as_view(), name='login'),
+	path('users/logout', views.UserLogout.as_view(), name='logout'),
+	path('users/user', views.UserView.as_view(), name='user'),
+  
+	path('api/v1/', include(routerAPI.urls)),
     
-    path('', ProductList.as_view(), name='list'),
-    path('<int:pk>/', ProductDetails.as_view(), name='detail'),
-    path('create/', ProductCreate.as_view(), name='create'),
-    path('update/<int:pk>/', ProductUpdate.as_view(), name='update'),
-    path('delete/<int:pk>/', ProductDelete.as_view(), name='delete'),
+	path('products/', views.ProductList.as_view(), name='list'),
+	path('products/<int:pk>/', views.ProductDetails.as_view(), name='detail'),
+	path('products/create/', views.ProductCreate.as_view(), name='create'),
+	path('products/update/<int:pk>/', views.ProductUpdate.as_view(), name='update'),
+	path('products/delete/<int:pk>/', views.ProductDelete.as_view(), name='delete'),	
 ]
-
-
-# This code auto generate GET, POST, PUT, DELETE
