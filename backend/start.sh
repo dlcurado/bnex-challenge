@@ -1,15 +1,13 @@
 #!/bin/bash
-echo "Starting Migrations for inital Use Admin..."
-python3 manage.py migrate
-echo ====================================
-
 echo "Creating Migrations..."
-python3 manage.py makemigrations
+python manage.py makemigrations api
 echo ====================================
 
 echo "Starting Migrations..."
-python3 manage.py migrate
+python manage.py migrate auth
+python manage.py migrate api
+python manage.py migrate
 echo ====================================
 
 echo "Starting Server..."
-python3 manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000
