@@ -23,9 +23,8 @@ function App() {
     <BrowserRouter>
       <div className="container mx-auto">
         <AuthenticationContext.Provider value={{authContext, setRegistrationToggle, setAuthentication}}>
-          <Navigation />
           <Routes>
-            <Route path='/' element={<LoginPage />} />
+            <Route path='/' element={!authContext.authenticated ? <LoginPage /> : <ProductPage />} />
             <Route path='/products' element={!authContext.authenticated ? <LoginPage /> : <ProductPage />} />
             <Route path='/products-create' element={!authContext.authenticated ? <LoginPage /> : <ProductFormPage />} />
             <Route path='/products/:id' element={!authContext.authenticated ? <LoginPage /> : <ProductFormPage />} />

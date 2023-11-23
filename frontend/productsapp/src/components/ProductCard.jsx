@@ -4,16 +4,18 @@ export function ProductCard({ product }) {
   const navigate = useNavigate()
 
   return (
-    <div
-      className="bg-zinc-800 p-3 hover:bg-zinc-700 hover:cursor-pointer"
-      onClick={() => {
+    <div onClick={() => {
         navigate(`/products/${product.id}` )
       }}
-    >
-      <h1 className="font-bold uppercase">{ product.name }</h1>
-      <p className="text-slate-400">{ product.description }</p>
-      <p className="text-slate-200">{ product.value }</p>
-      <hr />
+    > 
+      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1573/1573145.png" 
+          alt="${ product.name }"
+          className="h-full w-full object-cover object-center group-hover:opacity-75" />
+      </div>
+      <h3 className="mt-4 text-sm text-gray-700">{ product.name }</h3>
+      <p className="mt-1 text-lg font-medium text-gray-900">${ product.value }</p>
     </div>
   );
 }

@@ -1,11 +1,5 @@
 # Bnex Challenge
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
-
 <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--pkUM67f6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qxvlesvnv9ahxx2kcx47.png" width="500" alt="Desafio Bnex usando Django Rest Framework, React e PostgreSql">
 
 > Esté é um projeto criado para o desafio da empresa Bnex usando Django Rest Framework, React e PostgreSql.
@@ -15,6 +9,8 @@
 ### Frontend - React + Vite
 
 No projeto de frontend utilizei a ferramenta [Vite](https://vitejs.dev/) para facilitar a configuração do projeto em [ReactJs](https://react.dev/), como convesão de pastas, components e subida do servidor para disponibilizar o aplicativo.
+
+Para a estilização utilizei o [Tailwindui](https://tailwindui.com/) permitindo a utilização de componentes mais modernos e estilizados.
 
 Inicialmente o usuário verá uma tela de cadastro/login onde se autenticará para poder utilizar os recursos do app. Autenticação é um modelo simples usando Sessão, mesmo sabendo das suas vulnerabilidades por se tratar de um projeto pontual e mais simples.
 

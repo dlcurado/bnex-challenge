@@ -1,9 +1,10 @@
 import { ProductsList } from "../components/ProductsList";
+import { Navigation } from '../components/Navigation';
 
 export function ProductPage() {
   return (
     <div>
-      <h1>Lista de produtos:</h1>
+      <Navigation />
       <ProductsList />
     </div>
   )
