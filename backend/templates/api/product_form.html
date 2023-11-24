@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Primeira Template</title>
-</head>
-<body>
-    <h1>Lista de produtos</h1>
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block page_header %}Criar/Editar produto:{% endblock %}
+
+{% block content %}
     <form method="POST" action=".">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Salvar" />
-        <input type="reset" value="Cancelar" onclick="location.href = '{% url 'products:list' %}'" />
+        {{ form|bootstrap }}
+        <input type="submit" class="btn btn-primary mt-3" value="Salvar" />
+        <input type="reset" class="btn btn-secondary mt-3" value="Cancelar" onclick="location.href = '{% url 'products:list' %}'" />
     </form>
-</body>
-</html>
+{% endblock %}

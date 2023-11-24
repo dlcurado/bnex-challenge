@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api.apps.ApiConfig',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
@@ -97,8 +98,8 @@ DATABASES = {
         'USER': os.environ.get('POSTGRES_USER','admin'),
         'NAME': os.environ.get('POSTGRES_DB','bnex_db'),
         'PORT': os.environ.get('POSTGRES_PORT','5432'),
-        'HOST': os.environ.get('POSTGRES_HOST','bnex_db'),
-        #'HOST': os.environ.get('POSTGRES_HOST','172.19.0.3'),
+        #'HOST': os.environ.get('POSTGRES_HOST','bnex_db'),
+        'HOST': os.environ.get('POSTGRES_HOST','172.20.0.3'),
         
     }
 }

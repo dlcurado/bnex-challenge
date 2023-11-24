@@ -17,7 +17,7 @@ services:
         
   bnex_db:
     image: postgres
-    container_name: bnex_db
+    container_name: api_bnex_db
     restart: always
     environment:
       POSTGRES_PASSWORD: admin@123
@@ -29,17 +29,17 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
     networks:
-      - bnex_challenge_network
+      - api_bnex_challenge_network
 
   bnex_db_adminer:
     image: adminer
-    container_name: bnex_db_adminer
+    container_name: api_bnex_db_adminer
     restart: always
     ports:
       - 8080:8080
     networks:
-      - bnex_challenge_network
+      - api_bnex_challenge_network
 
 networks:
-    bnex_challenge_network:
+    api_bnex_challenge_network:
       driver: bridge
