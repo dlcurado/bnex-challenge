@@ -18,5 +18,6 @@
             <div class="col"> {{ object.value }}</div>
         </div>
     </div>
-    
+    <input type="submit" value="Editar" onclick="location.href='{% url 'products:update' pk=product.id %}'" class="btn btn-primary mb-3" />
+    <input type="submit" value="Excluir" onclick="location.href='{% url 'products:delete' pk=product.id %}'" class="btn btn-danger mb-3" />
 {% endblock %}
